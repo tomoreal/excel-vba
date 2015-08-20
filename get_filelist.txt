@@ -1,13 +1,13 @@
-'ƒ_ƒCƒ„ƒƒO‚Åw’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ“à‚Ìƒtƒ@ƒCƒ‹ˆê——‚ğæ“¾‚µ‚Ü‚·B
+'ãƒ€ã‚¤ãƒ¤ãƒ­ã‚°ã§æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…ã®ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã‚’å–å¾—ã—ã¾ã™ã€‚
 Sub getfilelist()
     Dim PATH As String
     Dim FileName As String
     Dim i As Integer
     
-    'ƒtƒHƒ‹ƒ_‚Ì‘I‘ğ
-    '•¡”‚ÌWord•¶‘‚É˜A‘±‚µ‚Äˆ—‚ğ{‚·ƒ}ƒNƒ http://stabucky.com/wp/archives/3004
+    'ãƒ•ã‚©ãƒ«ãƒ€ã®é¸æŠ
+    'è¤‡æ•°ã®Wordæ–‡æ›¸ã«é€£ç¶šã—ã¦å‡¦ç†ã‚’æ–½ã™ãƒã‚¯ãƒ­ http://stabucky.com/wp/archives/3004
     With Application.FileDialog(msoFileDialogFolderPicker)
-        .Title = "ƒtƒHƒ‹ƒ_‚ğ‘I‘ğ"
+        .Title = "ãƒ•ã‚©ãƒ«ãƒ€ã‚’é¸æŠ"
         .AllowMultiSelect = False
         If .Show = -1 Then
             PATH = .SelectedItems(1) & "\"
@@ -16,11 +16,11 @@ Sub getfilelist()
         End If
     End With
     
-    'æ“¾
+    'å–å¾—
     i = 1
     FileName = Dir(PATH)
     Do While FileName <> ""
-        Worksheets(1).Cells(i, 1) = FileName  'ƒtƒ@ƒCƒ‹ˆê——‚ÍWorksheets(1)‚Éo—Í
+        Worksheets(1).Cells(i, 1) = FileName  'ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã¯Worksheets(1)ã«å‡ºåŠ›
         i = i + 1
         FileName = Dir
     Loop
