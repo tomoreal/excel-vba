@@ -1,0 +1,27 @@
+'ダイヤログで指定したディレクトリ内のファイル一覧を取得します。
+Sub getfilelist()
+    Dim PATH As String
+    Dim FileName As String
+    Dim i As Integer
+    
+    'フォルダの選択
+    '複数のWord文書に連続して処理を施すマクロ http://stabucky.com/wp/archives/3004
+    With Application.FileDialog(msoFileDialogFolderPicker)
+        .Title = "フォルダを選択"
+        .AllowMultiSelect = False
+        If .Show = -1 Then
+            PATH = .SelectedItems(1) & "\"
+        Else
+            Exit Sub
+        End If
+    End With
+    
+    '取得
+    i = 1
+    FileName = Dir(PATH)
+    Do While FileName <> ""
+        Worksheets(1).Cells(i, 1) = FileName  'ファイル一覧はWorksheets(1)に出力
+        i = i + 1
+        FileName = Dir
+    Loop
+End Sub
