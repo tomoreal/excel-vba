@@ -1,87 +1,70 @@
 'Returns the all combinations (with repetitions) 
 'https://okwave.jp/qa/q5571459.html
-Sub comb2(myInput As String)
-    'Dim myStr As Variant
-    Dim rowX, MaxNum As Long
+Function myComb2(myInput As String) As String()
+    Dim rowX, MaxNum, MaxRow As Long
     Dim i, j, k, l As Long
     
-    'myStr = Split("A B C D E")
     myStr = Split(myInput)
     MaxNum = UBound(myStr)
+    MaxRow = WorksheetFunction.Combina(MaxNum + 1, 2)
+    ReDim arr(MaxRow - 1, 1) As String
+    
     rowX = 1
     For i = 0 To MaxNum
         For j = i To MaxNum
-            Cells(rowX, 1).value = myStr(i)
-            Cells(rowX, 2).value = myStr(j)
+            arr(rowX - 1, 0) = myStr(i)
+            arr(rowX - 1, 1) = myStr(j)
             rowX = rowX + 1
         Next j
     Next i
-End Sub
-'https://okwave.jp/qa/q5571459.html
-Sub comb3(myInput As String)
-    'Dim myStr As Variant
-    Dim rowX, MaxNum As Long
-    Dim i, j, k As Long
+    myComb2 = arr()
+End Function
+
+Function myComb3(myInput As String) As String()
+    Dim rowX, MaxNum, MaxRow As Long
+    Dim i, j, k, l As Long
     
-    'myStr = Split("A B C D E")
     myStr = Split(myInput)
     MaxNum = UBound(myStr)
+    MaxRow = WorksheetFunction.Combina(MaxNum + 1, 3)
+    ReDim arr(MaxRow - 1, 2) As String
+    
     rowX = 1
     For i = 0 To MaxNum
         For j = i To MaxNum
             For k = j To MaxNum
-                Cells(rowX, 1).value = myStr(i)
-                Cells(rowX, 2).value = myStr(j)
-                Cells(rowX, 3).value = myStr(k)
+                arr(rowX - 1, 0) = myStr(i)
+                arr(rowX - 1, 1) = myStr(j)
+                arr(rowX - 1, 2) = myStr(k)
                 rowX = rowX + 1
             Next k
         Next j
     Next i
-End Sub
+    myComb3 = arr()
+End Function
 
-'https://okwave.jp/qa/q5571459.html
-Sub comb4(myInput As String)
-    'Dim myStr As Variant
-    Dim rowX, MaxNum As Long
+Function myComb4(myInput As String) As String()
+    Dim rowX, MaxNum, MaxRow As Long
     Dim i, j, k, l As Long
     
-    'myStr = Split("A B C D E")
     myStr = Split(myInput)
     MaxNum = UBound(myStr)
+    MaxRow = WorksheetFunction.Combina(MaxNum + 1, 4)
+    ReDim arr(MaxRow - 1, 3) As String
+   
     rowX = 1
     For i = 0 To MaxNum
         For j = i To MaxNum
             For k = j To MaxNum
                 For l = k To MaxNum
-                    Cells(rowX, 1).value = myStr(i)
-                    Cells(rowX, 2).value = myStr(j)
-                    Cells(rowX, 3).value = myStr(k)
-                    Cells(rowX, 4).value = myStr(l)
+                    arr(rowX - 1, 0) = myStr(i)
+                    arr(rowX - 1, 1) = myStr(j)
+                    arr(rowX - 1, 2) = myStr(k)
+                    arr(rowX - 1, 3) = myStr(l)
                     rowX = rowX + 1
                 Next l
             Next k
         Next j
     Next i
-End Sub
-Sub test2_1()
-    Call comb2("2 4 8 15 20")
-End Sub
-
-Sub test2_2()
-    Call comb2("850 990 1,500 1,800 2,000")
-End Sub
-Sub test3_1()
-    Call comb3("2 4 8 15 20")
-End Sub
-
-Sub test3_2()
-    Call comb3("850 990 1,500 1,800 2,000")
-End Sub
-
-Sub test4_1()
-    Call comb4("2 4 8 15 20")
-End Sub
-
-Sub test4_2()
-    Call comb4("850 990 1,500 1,800 2,000")
-End Sub
+    myComb4 = arr()
+End Function
